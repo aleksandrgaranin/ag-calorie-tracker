@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from calories import views
+from calories import views as calories_veiws
+from users import views as users_views
+from django.contrib.auth import views as authentication_viws
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
+    path('', calories_veiws.welcome, name='welcome'),
+    path('index/',calories_veiws.index, name='index'),
+    path('delete/<int:id>/', calories_veiws.delete_consume,name='delete'),
+    path('register/', users_views.register, name='register'),
+    path('login/', authentication_viws.LoginView.as_view(template_name='users/login.html'),name='login'),
+    path('logout/', authentication_viws.LogoutView.as_view(template_name='users/logout.html'),name='logout'),
+    path('profile/',users_views.profilepage, name='profile'),
 ]

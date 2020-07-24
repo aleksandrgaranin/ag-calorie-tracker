@@ -1,0 +1,17 @@
+{% extends 'calories/base.html'%}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1 class="display-4">Welcome to Calorie Tracker</h1>
+                    <p class="lead">This is a simple application createtd to help you track your calories</p>
+                    <hr class="my-4">
+                    <p>Pleace Log in to your profile or Create one</p>
+                    <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Log in</a>
+                    <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Create</a>
+                  </div>
+                </div>
+        </div>
+    </div>
+{% endblock %}
