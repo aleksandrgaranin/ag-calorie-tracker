@@ -29,4 +29,12 @@ urlpatterns = [
     path('login/', authentication_viws.LoginView.as_view(template_name='users/login.html'),name='login'),
     path('logout/', authentication_viws.LogoutView.as_view(template_name='users/logout.html'),name='logout'),
     path('profile/',users_views.profilepage, name='profile'),
+    # add item
+    path('add/',calories_veiws.CreateFood.as_view(),name='reate_item'),
+    # edit
+    path('update/<int:id>/',calories_veiws.update_food,name='update_food'),
+    # delete
+    path('delete/<int:id>/',calories_veiws.delete_food,name='delete_food'),
+    # detail
+    path('<int:pk>/',calories_veiws.DetaleClassView.as_view(),name='detail'),
 ]

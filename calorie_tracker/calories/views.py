@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
 from .models import Food, Consume
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView
+from django.views.generic.detail import DetailView
+from .forms import Food
 import datetime
 
 # Create your views here.
@@ -36,3 +39,36 @@ def delete_consume(request, id):
 
 def welcome(request):
     return render(request,'calories/welcome.html')
+
+class CreateFood(CreateView):
+    model = Food
+    fields = ['user', 'name', 'carbs', 'protein', 'fat', 'calories']
+    template_name = 'calories/food-form.html'
+
+    def form_valid(self,form):
+        form.instance.user_name = self.request.user
+
+        return super().form_valid(form)
+
+def update_food(request,id):
+    food = Food.objects.get(id=id)
+    form = FoodForm(request.POST or None, instance=food)
+
+    if form.is_valid():
+        form.save()
+        return redirect('index')
+    
+    return render(request, 'calories/food-form.html',{'form':form,'item':food})
+
+def delete_food(request,id):
+    food = Food.objects.get(id=id)
+
+    if request.method == 'POST':
+        food.delete()
+        return redirect('index')
+
+    return render(request,'food/food-delete.html',{'food':food})
+
+class DetaleClassView(DetailView):
+    model = Food
+    template_name = 'calories/detail.html'    

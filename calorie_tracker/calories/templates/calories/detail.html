@@ -1,0 +1,18 @@
+{% extends 'calories/base.html' %}
+{% block body %}
+<div class="container">
+    <div class="row"> 
+        <div class="col-md-5">
+            <h3>{{ food.user }}</h3>
+            <h5>{{ food.name }}</h5>
+            <h6>{{ food.carbs }}</h6>  
+            <h6>{{ food.protein }}</h6> 
+            <h6>{{ food.fat }}</h6>  
+            <h6>{{ food.colories }}</h6>  
+            <a class="btn btn-success" href="{% url 'index' %}">Back</a>
+            <a class="btn btn-success" href="{% url 'update_food' food.id%}">Update</a>       
+            <a class="btn btn-danger" href="{% url 'delete_food' food.id%}">Delete</a>            
+        </div>
+    </div>
+</div>
+{% endblock %}
