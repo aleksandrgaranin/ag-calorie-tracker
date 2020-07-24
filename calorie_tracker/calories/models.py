@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
 
 # Create your models here.
 
@@ -14,7 +15,8 @@ class Food(models.Model):
     calories = models.IntegerField()
 
 class Consume(models.Model):
-    
+
+    date = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     food_concumed = models.ForeignKey(Food, on_delete=models.CASCADE)
 
