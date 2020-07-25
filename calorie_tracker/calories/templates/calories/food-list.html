@@ -1,0 +1,21 @@
+{% extends 'calories/base.html' %}
+{% block body %}
+
+<div class="container-fluid">
+        <div class="row" style="text-align: center;">
+            {% for food in item_list %}         
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 thumb">
+                <div class="card" style="width: auto; margin: auto; padding: 10px;">
+                    
+                    <div class="card-body">
+                        <h3>{{ food.name }}</h3>
+                        
+                        <a class="btn btn-success" href="{% url 'detail' food.id %}">Details</a>
+                    </div>  
+                </div>
+            </div>  
+            {% endfor %}
+        </div>
+    </div>  
+
+{% endblock %}
