@@ -24,17 +24,18 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', calories_veiws.welcome, name='welcome'),
     path('index/',calories_veiws.index, name='index'),
-    path('delete/<int:id>/', calories_veiws.delete_consume,name='delete'),
+    path('delete/<int:id>/', calories_veiws.delete_consume, name='delete'),
     path('register/', users_views.register, name='register'),
     path('login/', authentication_viws.LoginView.as_view(template_name='users/login.html'),name='login'),
     path('logout/', authentication_viws.LogoutView.as_view(template_name='users/logout.html'),name='logout'),
     path('profile/',users_views.profilepage, name='profile'),
     # add item
-    path('add/',calories_veiws.CreateFood.as_view(),name='reate_item'),
+    path('detaile/add/',calories_veiws.CreateFood.as_view(), name='reate_item'),
     # edit
-    path('update/<int:id>/',calories_veiws.update_food,name='update_food'),
+    path('detaile/update/<int:id>/',calories_veiws.update_food, name='update_food'),
     # delete
-    path('delete/<int:id>/',calories_veiws.delete_food,name='delete_food'),
+    path('detaile/delete/<int:id>/',calories_veiws.delete_food, name='delete_food'),
     # detail
-    path('<int:pk>/',calories_veiws.DetaleClassView.as_view(),name='detail'),
+    path('detaile/<int:pk>/',calories_veiws.DetaleClassView.as_view(), name='detail'),
+    path('detail/list/',calories_veiws.FoodView.as_view(),name='food_list'),
 ]

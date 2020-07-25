@@ -3,7 +3,8 @@ from .models import Food, Consume
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
-from .forms import Food
+from django.views.generic.list import ListView
+from .forms import FoodForm
 import datetime
 
 # Create your views here.
@@ -40,6 +41,8 @@ def delete_consume(request, id):
 def welcome(request):
     return render(request,'calories/welcome.html')
 
+
+
 class CreateFood(CreateView):
     model = Food
     fields = ['user', 'name', 'carbs', 'protein', 'fat', 'calories']
@@ -58,7 +61,7 @@ def update_food(request,id):
         form.save()
         return redirect('index')
     
-    return render(request, 'calories/food-form.html',{'form':form,'item':food})
+    return render(request, 'calories/food-form.html',{'form':form,'food':food})
 
 def delete_food(request,id):
     food = Food.objects.get(id=id)
@@ -67,8 +70,14 @@ def delete_food(request,id):
         food.delete()
         return redirect('index')
 
-    return render(request,'food/food-delete.html',{'food':food})
+    return render(request,'calories/food-delete.html',{'food':food})
 
 class DetaleClassView(DetailView):
     model = Food
-    template_name = 'calories/detail.html'    
+    template_name = 'calories/detail.html'
+
+
+class FoodView(ListView):
+    model = Food
+    template_name = 'calories/food-list.html'
+    context_object_name = 'item_list'
