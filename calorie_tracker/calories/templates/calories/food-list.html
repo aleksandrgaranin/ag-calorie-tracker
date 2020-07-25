@@ -3,19 +3,41 @@
 
 <div class="container-fluid">
         <div class="row" style="text-align: center;">
-            {% for food in item_list %}         
-            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 thumb">
-                <div class="card" style="width: auto; margin: auto; padding: 10px;">
-                    
-                    <div class="card-body">
-                        <h3>{{ food.name }}</h3>
-                        
-                        <a class="btn btn-success" href="{% url 'detail' food.id %}">Details</a>
-                    </div>  
+            <a class=" list-group-item list-group-item-warning list-group-item-action" href="{% url 'create_item' %}"><h3>Add your food</h3></a>
+        </div>
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div>
+                            <h4>Your food</h4>
+                        </div>
+                        <table id="table" class="table table-striped table-primary">
+                            <tr class="bg-primary text-white">
+                                <th>Food item</th>
+                                <th>Proteins<br>(gm)</th>
+                                <th>Remove item</th>
+                            </tr>
+                            {% for food in item_list %} 
+                                <tr>
+                                    <td><a class="btn btn-outline-dark" href="{% url 'detail' food.id %}">{{food.name}}</a></td>
+                                    <td>{{food.protein}}</td>
+                                    <td><a class="btn btn-danger" href="{% url 'delete_food' food.id %}">Remove</a></td>
+                                </tr>
+                            {% endfor %}      
+                                    
+                        </table>
+                    </div>
                 </div>
-            </div>  
-            {% endfor %}
+            
         </div>
     </div>  
 
 {% endblock %}
+<td>{{food.carbs}}</td>
+                                    
+                                    <td>{{food.fat}}</td>
+                                    <td>{{food.calories}}</td>
+
+                                    <th>Carbs <br>(gm)</th>
+                                
+                                <th>Fats<br>(gr)</th>
+                                <th>Calories<br>(Kcal)</th>

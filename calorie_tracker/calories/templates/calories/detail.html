@@ -2,13 +2,20 @@
 {% block body %}
 <div class="container">
     <div class="row"> 
-        <div class="col-md-5">
-            <h3>{{ food.user }}</h3>
-            <h5>{{ food.name }}</h5>
-            <h6>{{ food.carbs }}</h6>  
-            <h6>{{ food.protein }}</h6> 
-            <h6>{{ food.fat }}</h6>  
-            <h6>{{ food.colories }}</h6>  
+        <div class="col-md-12">
+            <br>
+            <div class="text-center">
+                <h4>User Name: {{ food.user }}</h4>
+            </div>
+            <hr>
+            <h5>Food Name: {{ food.name }}</h5>
+            <hr> 
+            <h5>Nutrients:</h5>
+            <h6>Carbs : {{ food.carbs }} gm</h6>  
+            <h6>Protein  {{ food.protein }} gm</h6> 
+            <h6>Fats : {{ food.fat }} gm</h6>  
+            <h6>Calories : {{ food.calories }} Kcal</h6> 
+            <hr> 
             <a class="btn btn-success" href="{% url 'index' %}">Back</a>
             <a class="btn btn-success" href="{% url 'update_food' food.id %}">Update</a>       
             <a class="btn btn-danger" href="{% url 'delete_food' food.id %}">Delete</a>            
