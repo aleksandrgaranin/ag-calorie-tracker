@@ -41,18 +41,16 @@ def delete_consume(request, id):
 def welcome(request):
     return render(request,'calories/welcome.html')
 
+@login_required
+def create_item(request):
+    form = FoodForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('index')
+    
+    return render(request,'calories/food-form.html',{'form':form})
 
-
-class CreateFood(CreateView):
-    model = Food
-    fields = ['user', 'name', 'carbs', 'protein', 'fat', 'calories']
-    template_name = 'calories/food-form.html'
-
-    def form_valid(self,form):
-        form.instance.user_name = self.request.user
-
-        return super().form_valid(form)
-
+@login_required
 def update_food(request,id):
     food = Food.objects.get(id=id)
     form = FoodForm(request.POST or None, instance=food)
@@ -63,6 +61,7 @@ def update_food(request,id):
     
     return render(request, 'calories/food-form.html',{'form':form,'food':food})
 
+@login_required
 def delete_food(request,id):
     food = Food.objects.get(id=id)
 
@@ -72,12 +71,14 @@ def delete_food(request,id):
 
     return render(request,'calories/food-delete.html',{'food':food})
 
-class DetaleClassView(DetailView):
-    model = Food
-    template_name = 'calories/detail.html'
+@login_required
+def detale(request,item_id):
+    item = Food.objects.get(pk=item_id)
+    
+    return render(request,'calories/detail.html',{'item':item})
 
-
-class FoodView(ListView):
-    model = Food
-    template_name = 'calories/food-list.html'
-    context_object_name = 'item_list'
+@login_required
+def food_list(request):
+    item_list = Food.objects.all()
+    
+    return render(request,'calories/food-list.html',{'item_list':item_list,}) 

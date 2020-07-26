@@ -30,12 +30,12 @@ urlpatterns = [
     path('logout/', authentication_viws.LogoutView.as_view(template_name='users/logout.html'),name='logout'),
     path('profile/',users_views.profilepage, name='profile'),
     # add item
-    path('detaile/add/',calories_veiws.CreateFood.as_view(), name='create_item'),
+    path('detaile/add/',calories_veiws.create_item, name='create_item'),
     # edit
     path('detaile/update/<int:id>/',calories_veiws.update_food, name='update_food'),
     # delete
     path('detaile/delete/<int:id>/',calories_veiws.delete_food, name='delete_food'),
     # detail
-    path('detaile/<int:pk>/',calories_veiws.DetaleClassView.as_view(), name='detail'),
-    path('detail/list/',calories_veiws.FoodView.as_view(),name='food_list'),
+    path('detaile/<int:pk>/',calories_veiws.detale, name='detail'),
+    path('detail/list/',calories_veiws.food_list,name='food_list'),
 ]
