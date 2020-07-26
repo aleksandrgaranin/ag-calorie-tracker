@@ -5,16 +5,16 @@
         <div class="col-md-12">
             <br>
             <div class="text-center">
-                <h4>User Name: {{ food.user }}</h4>
+                <h4>User Name: {{ item.user }}</h4>
             </div>
             <hr>
-            <h5>Food Name: {{ food.name }}</h5>
+            <h5>Food Name: {{ item.name }}</h5>
             <hr> 
             <h5>Nutrients:</h5>
-            <h6>Carbs : {{ food.carbs }} gm</h6>  
-            <h6>Protein  {{ food.protein }} gm</h6> 
-            <h6>Fats : {{ food.fat }} gm</h6>  
-            <h6>Calories : {{ food.calories }} Kcal</h6> 
+            <h6>Carbs : {{ item.carbs }} gm</h6>  
+            <h6>Protein  {{ item.protein }} gm</h6> 
+            <h6>Fats : {{ item.fat }} gm</h6>  
+            <h6>Calories : {{ item.calories }} Kcal</h6> 
             <hr> 
             <a class="btn btn-success" href="{% url 'index' %}">Back</a>
             <a class="btn btn-success" href="{% url 'update_food' item.id %}">Update</a>       
