@@ -57,7 +57,7 @@ def update_food(request,id):
 
     if form.is_valid():
         form.save()
-        return redirect('index')
+        return redirect('food_list')
     
     return render(request, 'calories/food-form.html',{'form':form,'food':food})
 
@@ -67,13 +67,13 @@ def delete_food(request,id):
 
     if request.method == 'POST':
         food.delete()
-        return redirect('index')
+        return redirect('food_list')
 
     return render(request,'calories/food-delete.html',{'food':food})
 
 @login_required
-def detale(request,item_id):
-    item = Food.objects.get(pk=item_id)
+def detale(request,id):
+    item = Food.objects.get(id=id)
     
     return render(request,'calories/detail.html',{'item':item})
 
@@ -81,4 +81,4 @@ def detale(request,item_id):
 def food_list(request):
     item_list = Food.objects.all()
     
-    return render(request,'calories/food-list.html',{'item_list':item_list,}) 
+    return render(request,'calories/food-list.html',{'item_list':item_list}) 

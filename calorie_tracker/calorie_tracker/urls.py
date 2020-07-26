@@ -36,6 +36,6 @@ urlpatterns = [
     # delete
     path('detaile/delete/<int:id>/',calories_veiws.delete_food, name='delete_food'),
     # detail
-    path('detaile/<int:pk>/',calories_veiws.detale, name='detail'),
+    path('detaile/<int:id>/',calories_veiws.detale, name='detail'),
     path('detail/list/',calories_veiws.food_list,name='food_list'),
 ]

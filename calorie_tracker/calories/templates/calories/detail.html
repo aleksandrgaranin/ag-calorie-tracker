@@ -17,8 +17,8 @@
             <h6>Calories : {{ food.calories }} Kcal</h6> 
             <hr> 
             <a class="btn btn-success" href="{% url 'index' %}">Back</a>
-            <a class="btn btn-success" href="{% url 'update_food' food.id %}">Update</a>       
-            <a class="btn btn-danger" href="{% url 'delete_food' food.id %}">Delete</a>            
+            <a class="btn btn-success" href="{% url 'update_food' item.id %}">Update</a>       
+            <a class="btn btn-danger" href="{% url 'delete_food' item.id %}">Delete</a>            
         </div>
     </div>
 </div>
